@@ -2,6 +2,8 @@ import { ScrollReveal } from "@/components/ScrollReveal";
 import { AnimatedCounter } from "@/components/AnimatedCounter";
 import { NewsletterForm } from "@/components/NewsletterForm";
 import { IssueArchive } from "@/components/IssueArchive";
+import { Navbar } from "@/components/Navbar";
+import { Footer } from "@/components/Footer";
 
 // ============================================
 // TEMPLATE CONFIGURATION
@@ -15,11 +17,6 @@ const NEWSLETTER = {
     "Every Wednesday, get a 5-minute briefing on the ideas, trends, and tools shaping the next decade. Read by forward-thinking professionals.",
   subscriberCount: 12847,
 };
-
-const NAV_LINKS = [
-  { label: "Past Issues", href: "#archive" },
-  { label: "Sponsor", href: "#sponsor" },
-];
 
 const COMPANIES = ["Google", "Stripe", "Figma", "Netflix", "Shopify"];
 
@@ -252,33 +249,7 @@ export default function Home() {
   return (
     <div className="min-h-screen bg-background">
       {/* ===== NAVBAR ===== */}
-      <nav className="sticky top-0 z-50 border-b border-border bg-background/80 backdrop-blur-lg">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
-          <a
-            href="#"
-            className="font-display text-lg font-bold tracking-tight"
-          >
-            {NEWSLETTER.name}
-          </a>
-          <div className="flex items-center gap-6">
-            {NAV_LINKS.map((link) => (
-              <a
-                key={link.href}
-                href={link.href}
-                className="hidden text-sm text-muted transition-colors hover:text-foreground sm:block"
-              >
-                {link.label}
-              </a>
-            ))}
-            <a
-              href="#subscribe"
-              className="rounded-full bg-accent px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-accent-hover"
-            >
-              Subscribe
-            </a>
-          </div>
-        </div>
-      </nav>
+      <Navbar />
 
       {/* ===== HERO ===== */}
       <section
@@ -543,53 +514,7 @@ export default function Home() {
       </section>
 
       {/* ===== FOOTER ===== */}
-      <footer className="border-t border-border py-16 sm:py-20">
-        <div className="mx-auto max-w-3xl px-6 text-center">
-          <h2 className="font-display text-2xl font-bold tracking-tight sm:text-3xl">
-            Stay in the loop
-          </h2>
-          <p className="mt-3 text-muted">
-            Join {NEWSLETTER.subscriberCount.toLocaleString()}+ readers getting
-            smarter every Wednesday.
-          </p>
-          <div className="mt-8">
-            <NewsletterForm variant="compact" />
-          </div>
-          <div className="mt-12 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-sm text-muted">
-            <a
-              href="#archive"
-              className="transition-colors hover:text-foreground"
-            >
-              Past Issues
-            </a>
-            <span className="text-border">&middot;</span>
-            <a
-              href="#about"
-              className="transition-colors hover:text-foreground"
-            >
-              About
-            </a>
-            <span className="text-border">&middot;</span>
-            <a
-              href="#sponsor"
-              className="transition-colors hover:text-foreground"
-            >
-              Sponsor
-            </a>
-            <span className="text-border">&middot;</span>
-            <a
-              href="mailto:hello@example.com"
-              className="transition-colors hover:text-foreground"
-            >
-              Contact
-            </a>
-          </div>
-          <p className="mt-8 text-sm text-muted/60">
-            &copy; {new Date().getFullYear()} {NEWSLETTER.name}. All rights
-            reserved.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
